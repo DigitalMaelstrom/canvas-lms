@@ -1262,7 +1262,7 @@ module ApplicationHelper
   end
 
   def authenticated_thumbnail_url(attachment, options={})
-    options[:original_url] = request.original_url
+    options[:original_url] = request.original_url if respond_to?(:request) and not request.nil?
     file_authenticator.thumbnail_url(attachment, options)
   end
 
